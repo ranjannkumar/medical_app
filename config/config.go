@@ -11,11 +11,11 @@ import (
 type Config struct {
 	DatabaseURL string
 	Port        string
+	JWTSecret   string
 }
 
 // LoadConfig loads configuration from environment variables or .env file
 func LoadConfig() *Config {
-	// Load .env file if it exists (for local development)
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("No .env file found, relying on environment variables.")
@@ -28,12 +28,18 @@ func LoadConfig() *Config {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // Default port if not set
+		port = "8080" 
+	}
+
+	jwtSecret := os.Getenv("JWT_SECRET")
+	if jwtSecret == "" {
+		log.Fatal("JWT_SECRET environment variable not set")
 	}
 
 	return &Config{
 		DatabaseURL: dbURL,
 		Port:        port,
+		JWTSecret:   jwtSecret,
 	}
 }
 
