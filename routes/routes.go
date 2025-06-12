@@ -41,8 +41,12 @@ func SetupRoutes(router *gin.Engine, authCtrl *controllers.AuthController, patie
 		{
 			// Doctor can only update doctor_notes and status
 			doctor.PUT("/patients/:id/notes", patientCtrl.UpdatePatientDoctorNotes)
-			// Doctors can also view all patients and specific patients (already covered by authenticated group)
 		}
 	}
+
+	// Catch-all route for React client-side routing.
+	router.NoRoute(func(c *gin.Context) {
+		c.File("./index.html") 
+	})
 }
 
