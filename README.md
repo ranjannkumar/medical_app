@@ -1,7 +1,7 @@
-Medical Portal Application
+**Medical Portal Application**
 This is a simple Go web application, built with Gin and GORM (PostgreSQL), to manage patients. It includes separate portals for receptionists and doctors.
 
-Features
+**Features**
 User Login: Single sign-on for both receptionists and doctors using JWT authentication.
 
 Role-Based Access: Different permissions for receptionists and doctors.
@@ -12,14 +12,14 @@ Doctor Functions: View patient details and update doctor_notes and status.
 
 Data Storage: Uses PostgreSQL for all user and patient data.
 
-Technology Stack
+**Technology Stack**
 Backend: Go (Gin Gonic, GORM, JWT, Bcrypt)
 
 Database: PostgreSQL
 
 Frontend: React with Vite (using Fetch API and Tailwind CSS)
 
-Setup and Running the Application
+**Setup and Running the Application**
 Prerequisites
 Go (1.18+)
 
@@ -57,7 +57,7 @@ go run main.go
 This starts the API server (default: http://localhost:8080).
 (Initial run will create receptionist/password and doctor/password users.)
 
-API Endpoints (for Postman)
+**API Endpoints (for Postman)**
 All API endpoints start with /api. Authenticated requests need an Authorization header: Bearer <your_jwt_token>.
 
 Authentication
@@ -79,7 +79,7 @@ DELETE /api/receptionist/patients/:id: Delete patient.
 Patient Management (Doctor Role)
 PUT /api/doctor/patients/:id/notes: Update doctor_notes and status.
 
-Frontend Usage
+**Frontend Usage**
 Start Go Backend: Follow the steps above.
 
 Run Frontend:
@@ -92,14 +92,14 @@ Login: Use receptionist/password or doctor/password.
 
 Explore: Interact with the portals to manage patients.
 
-Unit Tests
+**Unit Tests**
 I've included unit tests for the user_service and patient_service using an in-memory SQLite database.
 
 To run tests:
 
 go test ./tests/...
 
-My Additions
+**My Additions**
 User Roles: Implemented explicit receptionist and doctor roles with JWT and middleware.
 
 Patient Status: Added a Status field (active, discharged, on_leave).
